@@ -1,0 +1,34 @@
+plugins {
+	id 'org.springframework.boot' version '2.3.1.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+	id 'war'
+}
+
+group = 'com'
+version = '1.0.0'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+
+	// https://mvnrepository.com/artifact/org.apache.activemq/activemq-client
+	compile group: 'org.apache.activemq', name: 'activemq-client', version: '5.16.0'
+
+	// https://mvnrepository.com/artifact/org.springframework/spring-jms
+	compile group: 'org.springframework', name: 'spring-jms', version: '5.2.7.RELEASE'
+
+
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
+
+test {
+	useJUnitPlatform()
+}
